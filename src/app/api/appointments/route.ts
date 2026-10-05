@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await db.transaction(async (tx) => {
+    const result = await db.transaction(async (tx: any) => {
       const clash = await tx
         .select({ id: appointments.id })
         .from(appointments)

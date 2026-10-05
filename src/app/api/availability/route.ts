@@ -16,8 +16,7 @@ export async function GET(request: Request) {
   const taken = await db
     .select({ time: appointments.time })
     .from(appointments)
-    .where(and(eq(appointments.date, date), ne(appointments.status, "cancelled")));
-  const takenSet = new Set(taken.map((t) => t.time));
+  const takenSet = new Set(taken.map((t: any) => t.time));
 
   return Response.json({
     date,

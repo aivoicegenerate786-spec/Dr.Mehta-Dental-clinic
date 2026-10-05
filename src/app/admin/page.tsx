@@ -50,12 +50,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
 
   const counts = {
     total: rows.length,
-    pending: rows.filter((r) => r.status === "pending").length,
-    today: rows.filter((r) => r.date === today && r.status !== "cancelled").length,
+    pending: rows.filter((r: any) => r.status === "pending").length,
+    today: rows.filter((r: any) => r.date === today && r.status !== "cancelled").length,
   };
 
   const groups = new Map<string, typeof rows>();
-  rows.forEach((r) => groups.set(r.date, [...(groups.get(r.date) ?? []), r]));
+  rows.forEach((r: any) => groups.set(r.date, [...(groups.get(r.date) ?? []), r]));
 
   return (
     <main className="min-h-screen bg-paper pb-20 text-ink">
@@ -107,7 +107,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
               {date === today && <span className="ml-3 rounded-full bg-lime px-2 py-0.5 align-middle text-xs">Today</span>}
             </h2>
             <div className="mt-4 overflow-hidden rounded-2xl border border-ink/10 bg-white">
-              {items.map((r) => (
+              {items.map((r: any) => (
                 <div
                   key={r.id}
                   className="grid gap-3 border-b border-ink/[0.07] p-5 last:border-0 md:grid-cols-[90px_1.2fr_1fr_auto] md:items-center"

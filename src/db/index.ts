@@ -27,6 +27,7 @@ const mockDb = {
   set: () => mockDb,
   returning: () => [],
   then: (resolve: any) => resolve([]),
+  transaction: async (cb: any) => cb(mockDb),
 };
 
 export const db = databaseUrl ? drizzle(pool) : (mockDb as any);
